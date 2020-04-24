@@ -5,19 +5,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- DatePicker Bootstrap -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+          $( function() {
+            $( "#datepicker, #datepicker1, #datepicker2" ).datepicker({
+                dateFormat: "yy-mm-dd",
+                changeYear: true
+            });
+          } );
+    </script>
 
     <title>Guarderia Infantil Miramar</title>
 </head>
 <body>
 <h1>List of children</h1>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" >Add new</button>
 
 <table class="table table-stripped">
     <thead>
@@ -25,7 +42,7 @@
         <td>Name</td>
         <td>Last name</td>
         <td>DNI</td>
-        <td>Birthday</td>
+        <td>Date of birth</td>
         <td>Inscription</td>
         <td>Regular</td>
     </tr>
@@ -39,5 +56,58 @@
         <td th:text="${children.regular}">Regular</td>
     </tr>
 </table>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form th:action="@{/children/addNew}" method="post">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New child</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="surname">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">DNI:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="dni">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Sex:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="sex">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Date of birth:</label>
+                    <input type="text" class="form-control" id="datepicker1" name="birthday">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Day of Inscription:</label>
+                    <input type="text" class="form-control" id="datepicker2" name="inscription">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Regular:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="regular">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
 </body>
 </html>
