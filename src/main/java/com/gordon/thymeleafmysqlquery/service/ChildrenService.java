@@ -37,7 +37,12 @@ public class ChildrenService {
     }
      */
 
-    public void addNew(Children children){
+    public void addAndUpdate(Children children){
         childrenRepository.save(children);
     }
+
+    public void delete(Children children){
+        childrenRepository.delete(children);
+    }
+
 }

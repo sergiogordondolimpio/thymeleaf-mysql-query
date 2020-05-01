@@ -30,7 +30,7 @@ public class Children {
     @Column
     private String regular;
     @Column
-    private Integer id_users;
+    private String plan;
     @Column
     private Integer id_whowithdraw;
 
@@ -48,7 +48,7 @@ public class Children {
                 ", inscription='" + inscription + '\'' +
                 ", sex='" + sex + '\'' +
                 ", regular='" + regular + '\'' +
-                ", id_users=" + id_users +
+                ", plan=" + plan +
                 ", id_whowithdraw=" + id_whowithdraw +
                 '}';
     }
@@ -117,12 +117,12 @@ public class Children {
         this.regular = regular;
     }
 
-    public Integer getId_users() {
-        return id_users;
+    public String getPlan() {
+        return plan;
     }
 
-    public void setId_users(Integer id_users) {
-        this.id_users = id_users;
+    public void setPlan(String plan) {
+        this.plan = plan;
     }
 
     public Integer getId_whowithdraw() {

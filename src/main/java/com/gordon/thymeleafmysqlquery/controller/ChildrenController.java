@@ -83,7 +83,19 @@ public class ChildrenController {
 
     @PostMapping("/addNew")
     public String addNew(Children children){
-        childrenService.addNew(children);
+        childrenService.addAndUpdate(children);
+        return "redirect:/children/Children";
+    }
+
+    @RequestMapping(value = "/update", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String update(Children children){
+        childrenService.addAndUpdate(children);
+        return "redirect:/children/Children";
+    }
+
+    @RequestMapping(value = "/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String delete(Children children){
+        childrenService.delete(children);
         return "redirect:/children/Children";
     }
 }
