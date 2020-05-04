@@ -45,4 +45,7 @@ public class ChildrenService {
         childrenRepository.delete(children);
     }
 
+    public List<Children> findAName(String name) {
+        return childrenRepository.findAName(name);
+    }
 }

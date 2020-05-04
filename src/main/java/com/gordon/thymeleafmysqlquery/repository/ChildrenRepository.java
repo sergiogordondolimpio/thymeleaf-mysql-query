@@ -16,6 +16,12 @@ public interface ChildrenRepository extends CrudRepository<Children, Integer> {
 
     List<Children> findByNameOrderByInscriptionDesc(String name);
 
+    //@Query("SELECT * FROM taller_infantil_miramar.children where name like ?1% or surname like ?2%")
+    @Query(value =
+            "select * from taller_infantil_miramar.children where name like ?1%"
+            , nativeQuery = true)
+    List<Children> findAName(String name);
+
     /*
     @Query("SELECT count(name) FROM taller_infantil_miramar.children where name = ?1 AND regular = ?2")
     Integer countChildren(String name, String regular);

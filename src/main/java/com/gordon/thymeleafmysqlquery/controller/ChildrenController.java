@@ -98,4 +98,22 @@ public class ChildrenController {
         childrenService.delete(children);
         return "redirect:/children/Children";
     }
+
+    @RequestMapping("/byNameAndSurname")
+    @ResponseBody
+    public List<Children> byNameAndSurname(String name){
+        String surname = name;
+        return childrenService.findAName(name);
+    }
+
+
+    @RequestMapping("/byNameAndSurname/{name}")
+    public String byNameAndSurname (@PathVariable (value = "name") String name, Model model){
+
+        List<Children> childrenList = childrenService.findAName(name);
+        model.addAttribute("childrenList", childrenList);
+        return "children";
+    }
+
+
 }
