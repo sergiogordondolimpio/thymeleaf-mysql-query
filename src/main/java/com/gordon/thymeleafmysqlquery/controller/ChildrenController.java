@@ -99,17 +99,28 @@ public class ChildrenController {
         return "redirect:/children/Children";
     }
 
-    @RequestMapping("/byNameAndSurname")
+    /*
+     * test search with string all the name or surname that start with
+     * that string
+     * @param name
+     * @return
+     */
+   /* @RequestMapping("/byNameAndSurname")
     @ResponseBody
     public List<Children> byNameAndSurname(String name){
         String surname = name;
         return childrenService.findAName(name);
-    }
+    } */
 
-
-    @RequestMapping("/byNameAndSurname/{name}")
-    public String byNameAndSurname (@PathVariable (value = "name") String name, Model model){
-
+    /**
+     * Search a name or surname that start with the string name
+     * and make a list in the same page
+     * @param name
+     * @param model
+     * @return
+     */
+    @GetMapping("/Children")
+    public String byNameAndSurname (@RequestParam(defaultValue = "") String name, Model model){
         List<Children> childrenList = childrenService.findAName(name);
         model.addAttribute("childrenList", childrenList);
         return "children";
