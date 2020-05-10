@@ -3,6 +3,7 @@ package com.gordon.thymeleafmysqlquery.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -33,6 +34,20 @@ public class Children {
     private String plan;
     @Column
     private Integer id_whowithdraw;
+
+    /* I think that is the connection with another table
+    with the foreign key
+    @OneToMany(mappedBy = "id_children", cascade = CascadeType.ALL)
+    private List<Monthspay> monthspays;
+
+    @ManyToMany(cascade=CascadeType.All)
+    @JoinTable(name="CHILDREN_WHOWITHDRAWS", JoinColumns= {
+        @JoinColumn(name="CHILDREN_ID", referencedColumnName="id")
+    }, inverseJoincolumns= {
+        @JoinColumn(name="WHOWITHDRAW_ID", referencedColumnName="id")
+    })
+    private List<Whowithdraw> whowithdraws
+*/
 
     public Children() {
     }

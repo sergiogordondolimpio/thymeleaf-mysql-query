@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
-
+    <div layout:fragment="content" class="container mySpace">
+        <div class="jumbotron">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget libero gravida dui lobortis mattis quis eu augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam lobortis elementum dui, eleifend lobortis est vehicula sit amet. In maximus in turpis a tempus. Pellentesque at consectetur velit.</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -66,6 +66,7 @@
         <td>Plan</td>
         <td>Edit</td>
         <td>Delete</td>
+        <td>Details</td>
     </tr>
     </thead>
     <tr th:each="children:${childrenList}">
@@ -78,6 +79,7 @@
         <td th:text="${children.plan}">Plan</td>
         <td><a th:href="@{/children/getOne/(id=${children.id})}" class="btn btn-primary">Update</a> </td>
         <td><a th:href="@{/children/getOne/(id=${children.id})}" class="btn btn-warning">Delete</a> </td>
+        <td><a th:href="@{/children/showOne/(id=${children.id})}" class="btn btn-info">Details</a> </td>
     </tr>
 </table>
 
