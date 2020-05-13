@@ -1,36 +1,40 @@
 package com.gordon.thymeleafmysqlquery.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users", schema = "taller_infantil_miramar")
-public class User {
+public class RegisteredUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
     @Column
-    @NotEmpty
+    @NotEmpty(message = "This field can not be empty")
     private String name;
     @Column
-    @NotEmpty
+    @NotEmpty(message = "This field can not be empty")
     private String surname;
     @Column
-    @Size(min = 4)
+    @NotEmpty(message = "This field can not be empty")
     private String pass;
     @Column
     private int dni;
-    @Column
-    @NotEmpty
+    @Column(unique = true)
+    @NotEmpty(message = "This field can not be empty")
+    @Email(message = "It is not a format for email, example: mail@mail.com")
     private String email;
 
-    public User() {
+    public RegisteredUser() {
     }
 
-    public User(int id, String name, String surname,String pass, int dni, String email) {
+    public RegisteredUser(int id, String name, String surname, String pass, int dni, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -41,7 +45,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "RegisteredUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
